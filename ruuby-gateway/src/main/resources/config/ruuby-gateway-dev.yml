@@ -1,0 +1,44 @@
+# nacos配置中心配置内容
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ruuby-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      username: "nacos"
+      password: "nacos"
+      discovery:
+        # 服务注册中心地址
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+      config:
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        # 配置文件格式
+        file-extension: yml
+        shared-configs:
+          - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+        group: DEFAULT-GROUP
+    gateway:
+      routes:
+        - id: account-svc-route
+          uri: lb://account-svc
+          predicates:
+            - Path=/gateway/**
+          filters:
+            - StripPrefix=1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

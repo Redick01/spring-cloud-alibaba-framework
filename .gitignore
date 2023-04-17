@@ -1,0 +1,15 @@
+target/
+*.jar
+!.mvn/wrapper/*
+*.war
+*.zip
+*.tar
+*.tar.gz
+.flattened-pom.xml
+.idea/
+*.ipr
+*.iml
+*.iws
+.DS_Store
+logs/*
+.fleet/
