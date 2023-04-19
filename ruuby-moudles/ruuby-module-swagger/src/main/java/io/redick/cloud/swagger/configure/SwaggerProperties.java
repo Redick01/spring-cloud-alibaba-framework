@@ -2,12 +2,15 @@ package io.redick.cloud.swagger.configure;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * @author Redick01
  */
 @ConfigurationProperties("swagger")
+@Data
 public class SwaggerProperties {
 
     /**
@@ -69,103 +72,6 @@ public class SwaggerProperties {
      * 联系人信息
      */
     private Contact contact = new Contact();
-
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled( Boolean enabled ) {
-        this.enabled = enabled;
-    }
-
-    public String getBasePackage() {
-        return basePackage;
-    }
-
-    public void setBasePackage( String basePackage ) {
-        this.basePackage = basePackage;
-    }
-
-    public List<String> getBasePath() {
-        return basePath;
-    }
-
-    public void setBasePath( List<String> basePath ) {
-        this.basePath = basePath;
-    }
-
-    public List<String> getExcludePath() {
-        return excludePath;
-    }
-
-    public void setExcludePath( List<String> excludePath ) {
-        this.excludePath = excludePath;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle( String title ) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription( String description ) {
-        this.description = description;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion( String version ) {
-        this.version = version;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense( String license ) {
-        this.license = license;
-    }
-
-    public String getLicenseUrl() {
-        return licenseUrl;
-    }
-
-    public void setLicenseUrl( String licenseUrl ) {
-        this.licenseUrl = licenseUrl;
-    }
-
-    public String getTermsOfServiceUrl() {
-        return termsOfServiceUrl;
-    }
-
-    public void setTermsOfServiceUrl( String termsOfServiceUrl ) {
-        this.termsOfServiceUrl = termsOfServiceUrl;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost( String host ) {
-        this.host = host;
-    }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact( Contact contact ) {
-        this.contact = contact;
-    }
 
     public static class Contact {
         /**

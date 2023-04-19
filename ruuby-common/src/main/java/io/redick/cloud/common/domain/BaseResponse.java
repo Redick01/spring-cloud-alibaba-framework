@@ -1,4 +1,4 @@
-package io.redick.cloud.common;
+package io.redick.cloud.common.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

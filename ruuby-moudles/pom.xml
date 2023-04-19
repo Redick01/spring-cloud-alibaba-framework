@@ -13,6 +13,7 @@
 
     <modules>
         <module>ruuby-module-swagger</module>
+        <module>ruuby-module-redis</module>
     </modules>
 
     <packaging>pom</packaging>

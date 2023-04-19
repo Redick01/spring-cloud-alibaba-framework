@@ -1,6 +1,6 @@
 package io.redick.cloud.account.dto;
 
-import io.redick.cloud.common.BaseResponse;
+import io.redick.cloud.common.domain.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
