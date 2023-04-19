@@ -4,6 +4,8 @@ import com.redick.annotation.LogMarker;
 import io.redick.cloud.account.dto.AccountDto;
 import io.redick.cloud.account.dto.AccountList;
 import io.redick.cloud.account.dto.ListAccountResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Redick01
  */
 @RestController
+@Api(tags = "AccountController")
 @RequestMapping("/account")
 public class AccountController {
 
     @GetMapping(path = "/list")
     @LogMarker(businessDescription = "account#list")
+    @ApiOperation(value = "Account#list", notes = "account")
     public ListAccountResponse list() {
         AccountList list = new AccountList();
         List<AccountDto> accounts = new ArrayList<>();

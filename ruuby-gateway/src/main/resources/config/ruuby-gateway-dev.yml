@@ -1,6 +1,5 @@
-# nacos配置中心配置内容
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
@@ -31,12 +30,38 @@ spring:
         group: DEFAULT-GROUP
     gateway:
       routes:
-        - id: account-svc-route
+        - id: account-svc
           uri: lb://account-svc
           predicates:
             - Path=/gateway/**
           filters:
             - StripPrefix=1
+    sentinel:
+      # 取消控制台懒加载
+      eager: true
+      transport:
+        # 控制台地址
+        dashboard: 127.0.0.1:8080
+      # nacos配置持久化
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-sentinel-${spring.profiles.active}.json
+            namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: gw-flow
+      filter:
+        enabled: true
+        # 配置默认fallback，也可以编码自定义fallback
+        # scg.fallback:
+        #     mode: response
+        #     response-status: 444
+        #     response-body: 1234
+        # scg:
+        #   order: -100
+
 management:
   endpoints:
     web:

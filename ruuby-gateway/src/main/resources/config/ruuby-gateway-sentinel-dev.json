@@ -1,0 +1,8 @@
+[
+    {
+        "resource": "account-svc",
+        "count": 5,
+        "grade": 0,
+        "limitApp": "default"
+    }
+]

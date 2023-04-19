@@ -1,6 +1,5 @@
 package io.redick.cloud.account;
 
-import io.redick.cloud.account.AccountConstant;
 import io.redick.cloud.account.dto.ListAccountResponse;
 import javax.validation.constraints.Min;
 import org.springframework.cloud.openfeign.FeignClient;

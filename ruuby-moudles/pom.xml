@@ -5,11 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.redick.cloud</groupId>
-        <artifactId>ruuby-account</artifactId>
+        <artifactId>spring-cloud-alibaba-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     
-    <artifactId>ruuby-account-api</artifactId>
+    <artifactId>ruuby-moudles</artifactId>
 
-    <packaging>jar</packaging>
+    <modules>
+        <module>ruuby-module-swagger</module>
+    </modules>
+
+    <packaging>pom</packaging>
 </project>
