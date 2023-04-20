@@ -17,6 +17,7 @@
         <module>ruuby-biz</module>
         <module>ruuby-common</module>
         <module>ruuby-moudles</module>
+        <module>ruuby-auth</module>
     </modules>
     
     <properties>
@@ -31,6 +32,9 @@
         <swagger.fox.version>3.0.0</swagger.fox.version>
         <fastjson.version>2.0.22</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
+        <dynamic.datasource.version>3.5.1</dynamic.datasource.version>
+        <druid.version>1.2.15</druid.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     

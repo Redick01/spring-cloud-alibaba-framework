@@ -1,15 +1,14 @@
 server:
-  port: 8081
-
+  port: 8089
 spring:
   application:
-    name: ruuby-gateway
+    name: order-svc
   profiles:
     active: dev
-  redis:
-    host: localhost
-    port: 6379
-    password:
+  # 解决springboot 2.6以上集成swagger3报错问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   cloud:
     nacos:
       username: "nacos"
@@ -32,37 +31,13 @@ spring:
           - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
         namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
         group: DEFAULT-GROUP
-    gateway:
-      routes:
-        - id: account-svc
-          uri: lb://account-svc
-          predicates:
-            - Path=/gateway/account/**
-          filters:
-            - StripPrefix=1
-            # url黑名单 这是一个局部过滤器
-            # - name: BlackListUrlFilter
-            #   args:
-            #     blackListUrl:
-            #       - /account/list
-            # 鉴权过滤器
-            # - name: AuthFilter
-            #   args:
-            #     type: jwt
-            #     publicKey: 11111
-        - id: order-svc
-          uri: lb://order-svc
-          predicates:
-            - Path=/gateway/order/**
-          filters:
-            - StripPrefix=1
+    # sentinel支持
     sentinel:
       # 取消控制台懒加载
       eager: true
       transport:
-        # 控制台地址
         dashboard: 127.0.0.1:8080
-      # nacos配置持久化
+      # 动态数据源支持
       datasource:
         ds1:
           nacos:
@@ -71,27 +46,28 @@ spring:
             namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
             groupId: DEFAULT_GROUP
             data-type: json
-            rule-type: gw-flow
-      filter:
-        enabled: true
-      # 配置默认fallback，也可以编码自定义fallback
-      # scg.fallback:
-      #     mode: response
-      #     response-status: 444
-      #     response-body: 1234
-      # scg:
-      #   order: -100
+            # 具体配置参考com.alibaba.cloud.sentinel.datasource.RuleType
+            rule-type: flow
 
-# Xss过滤
-security:
-  xss:
+# feign支持sentinel
+# feign:
+#   sentinel:
+#     enabled: true
+# RestTemplate支持sentinel
+resttemplate:
+  sentinel:
     enabled: true
-    excludeUrls:
-      - /account/list
-      - /order
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+# swagger配置
+swagger:
+  enabled: true
+  basePackage: io.redick.cloud.order
+  title: Order模块接口文档
+  description: Order模块接口文档
+  version: 0.0.1
+  terms-of-service-ur: io.redick.cloud.order

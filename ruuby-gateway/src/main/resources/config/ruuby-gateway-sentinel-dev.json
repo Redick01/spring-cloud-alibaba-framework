@@ -4,5 +4,11 @@
         "count": 5,
         "grade": 0,
         "limitApp": "default"
+    },
+    {
+        "resource": "order-svc",
+        "count": 5,
+        "grade": 0,
+        "limitApp": "default"
     }
 ]

@@ -8,10 +8,15 @@
         <artifactId>ruuby-biz</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    
+
+    <description>
+        demo程序，库存系统
+    </description>
+
     <artifactId>ruuby-account</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>ruuby-account-api</module>
         <module>ruuby-account-svc</module>
     </modules>
     

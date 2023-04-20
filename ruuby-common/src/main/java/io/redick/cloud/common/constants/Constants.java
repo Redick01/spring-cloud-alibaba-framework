@@ -56,6 +56,11 @@ public final class Constants {
     public static final Integer FAIL = 500;
 
     /**
+     * 流控
+     */
+    public static final Integer FLOW = 455;
+
+    /**
      * 登录成功状态
      */
     public static final String LOGIN_SUCCESS_STATUS = "0";

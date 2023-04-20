@@ -25,6 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
+ *
  * @author Redick01
  */
 @Component(value = "jwt")

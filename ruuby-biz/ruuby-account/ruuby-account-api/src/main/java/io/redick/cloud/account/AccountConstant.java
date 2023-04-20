@@ -5,5 +5,5 @@ package io.redick.cloud.account;
  */
 public final class AccountConstant {
 
-    public static final String SERVICE_NAME = "account-service";
+    public static final String SERVICE_NAME = "account-svc";
 }

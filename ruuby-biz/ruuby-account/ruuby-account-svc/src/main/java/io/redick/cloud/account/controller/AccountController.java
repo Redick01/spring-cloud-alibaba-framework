@@ -1,12 +1,13 @@
 package io.redick.cloud.account.controller;
 
 import com.redick.annotation.LogMarker;
-import io.redick.cloud.account.dto.AccountDto;
-import io.redick.cloud.account.dto.AccountList;
-import io.redick.cloud.account.dto.ListAccountResponse;
+import io.redick.cloud.account.AccountService;
+import io.redick.cloud.account.dto.StockDTO;
+import io.redick.cloud.common.domain.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,20 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(tags = "AccountController")
 @RequestMapping("/account")
-public class AccountController {
+public class AccountController implements AccountService {
 
     @GetMapping(path = "/list")
     @LogMarker(businessDescription = "account#list")
     @ApiOperation(value = "Account#list", notes = "account")
-    public ListAccountResponse list() {
-        AccountList list = new AccountList();
-        List<AccountDto> accounts = new ArrayList<>();
-        AccountDto dto = new AccountDto();
-        dto.setId("1");
-        dto.setName("Redick");
-        dto.setEmail("11090829@qq.com");
+    @Override
+    public R<List<StockDTO>> list() {
+        List<StockDTO> accounts = new ArrayList<>();
+        StockDTO dto = new StockDTO();
+        dto.setProductId("111");
+        dto.setProductName("手机");
+        dto.setTotalCount(100);
+        dto.setProductDesc("华为P100");
+        dto.setCreateTime(new Date());
         accounts.add(dto);
-        list.setAccounts(accounts);
-        return new ListAccountResponse(list);
+        return R.ok(accounts);
     }
 }
