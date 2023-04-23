@@ -45,7 +45,7 @@
         <dependency>
             <groupId>io.github.redick01</groupId>
             <artifactId>log-helper-spring-boot-starter-scg</artifactId>
-            <version>1.0.4-RELEASE</version>
+            <version>${log-helper.version}</version>
         </dependency>
 
         <dependency>

@@ -18,6 +18,13 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- MySQL日志组件 -->
+        <dependency>
+            <groupId>io.github.redick01</groupId>
+            <artifactId>mysql-5</artifactId>
+            <version>${log-helper.version}</version>
+        </dependency>
+
         <!-- Druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -36,6 +43,7 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>${dynamic.datasource.version}</version>
         </dependency>
+
     </dependencies>
 
 </project>

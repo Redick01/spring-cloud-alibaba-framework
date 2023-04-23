@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator desc="MyBatis-Plus代码生成">
+    <url desc="数据库链接">
+        jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&amp;characterEncoding=UTF8
+    </url>
+    <username desc="数据库用户名">
+        root
+    </username>
+    <password desc="数据库密码">
+        admin123
+    </password>
+    <author desc="java文件作者">
+        Redick01
+    </author>
+    <outputDir desc="指定输出目录，到main/java目录">
+        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-account/ruuby-account-svc/src/main/java
+    </outputDir>
+    <parentPackage desc="父包名">
+        io.redick.cloud.account
+    </parentPackage>
+    <mapperPath desc="mapper xml文件路径">
+        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-account/ruuby-account-svc/src/main/java/io/redick/cloud/account/mapper
+    </mapperPath>
+    <tables desc="表名列表">
+        <table desc="表名">
+            stock
+        </table>
+    </tables>
+    <tablePrefix desc="设置过滤表前缀">
+
+    </tablePrefix>
+    <service desc="Service文件名规则">
+        %sService
+    </service>
+    <serviceImpl desc="Service实现文件名规则">
+        %sServiceImpl
+    </serviceImpl>
+</generator>

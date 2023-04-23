@@ -15,6 +15,7 @@
         <module>ruuby-module-swagger</module>
         <module>ruuby-module-redis</module>
         <module>ruuby-module-datasource</module>
+        <module>ruuby-module-mybatisplus-generator</module>
     </modules>
 
     <packaging>pom</packaging>

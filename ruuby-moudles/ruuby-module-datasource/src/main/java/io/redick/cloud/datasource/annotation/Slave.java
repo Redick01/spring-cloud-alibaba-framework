@@ -10,6 +10,6 @@ import java.lang.annotation.*;
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@DS("salve")
+@DS("slave")
 public @interface Slave {
 }
