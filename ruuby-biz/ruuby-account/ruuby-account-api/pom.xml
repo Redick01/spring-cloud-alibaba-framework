@@ -12,4 +12,12 @@
     <artifactId>ruuby-account-api</artifactId>
 
     <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

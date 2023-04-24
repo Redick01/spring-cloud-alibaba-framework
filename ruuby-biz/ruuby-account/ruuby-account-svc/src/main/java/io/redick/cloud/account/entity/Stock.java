@@ -3,6 +3,15 @@ package io.redick.cloud.account.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.redick.cloud.account.dto.StockDTO;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -16,6 +25,8 @@ import java.util.Date;
  * @since 2023-04-23
  */
 @TableName("stock")
+@Getter
+@Setter
 public class Stock implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,53 +62,36 @@ public class Stock implements Serializable {
      */
     private String productDesc;
 
+    public static Wrapper<Stock> pageWrapper(Page<Stock> page, StockDTO stockDTO) {
+        Wrapper<Stock> wrapper = Wrappers.<Stock>lambdaQuery();
+        if (StringUtils.isNotBlank(stockDTO.getProductId())) {
+            wrapper = Wrappers.<Stock>lambdaQuery().eq(Stock::getProductId, stockDTO.getProductId());
+        }
+        if (StringUtils.isNotBlank(stockDTO.getProductName())) {
+            wrapper = Wrappers.<Stock>lambdaQuery().like(Stock::getProductName, stockDTO.getProductName());
+        }
+        if (StringUtils.isNotBlank(stockDTO.getProductDesc())) {
+            wrapper = Wrappers.<Stock>lambdaQuery().like(Stock::getProductDesc, stockDTO.getProductDesc());
+        }
 
-    public Long getId() {
-        return id;
-    }
+        if (null != stockDTO.getBeginTime() && null != stockDTO.getEndTime()) {
+            wrapper = Wrappers.<Stock>lambdaQuery().between(Stock::getCreateTime, stockDTO.getBeginTime(), stockDTO.getEndTime());
+        }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        if (null != stockDTO.getBeginTime() && null == stockDTO.getEndTime()) {
+            wrapper = Wrappers.<Stock>lambdaQuery().ge(Stock::getCreateTime, stockDTO.getBeginTime());
+        }
 
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Integer getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(Integer totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getProductDesc() {
-        return productDesc;
-    }
-
-    public void setProductDesc(String productDesc) {
-        this.productDesc = productDesc;
+        if (null == stockDTO.getBeginTime() && null != stockDTO.getEndTime()) {
+            wrapper = Wrappers.<Stock>lambdaQuery().le(Stock::getCreateTime, stockDTO.getEndTime());
+        }
+        if (StringUtils.isNotBlank(stockDTO.getOrderByColumn()) && "asc".equalsIgnoreCase(stockDTO.getAsc())) {
+            page.addOrder(OrderItem.asc(stockDTO.getOrderByColumn()));
+        }
+        if (StringUtils.isNotBlank(stockDTO.getOrderByColumn()) && "desc".equalsIgnoreCase(stockDTO.getAsc())) {
+            page.addOrder(OrderItem.desc(stockDTO.getOrderByColumn()));
+        }
+        return wrapper;
     }
 
     @Override
