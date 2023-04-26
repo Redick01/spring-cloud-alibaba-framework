@@ -10,13 +10,13 @@
     
     <groupId>io.redick.cloud</groupId>
     <artifactId>spring-cloud-alibaba-framework</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
         <module>ruuby-gateway</module>
         <module>ruuby-biz</module>
         <module>ruuby-common</module>
-        <module>ruuby-moudles</module>
+        <module>ruuby-modules</module>
         <module>ruuby-auth</module>
     </modules>
     
@@ -105,6 +105,33 @@
                 <configuration>
                     <classifier>exec</classifier>
                 </configuration>
+            </plugin>
+
+            <!-- 版本管理 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

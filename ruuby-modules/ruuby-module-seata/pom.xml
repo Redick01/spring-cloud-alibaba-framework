@@ -5,12 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.redick.cloud</groupId>
-        <artifactId>spring-cloud-alibaba-framework</artifactId>
+        <artifactId>ruuby-modules</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>ruuby-auth</artifactId>
+    <artifactId>ruuby-module-seata</artifactId>
 
-    <description>Auth认证中心</description>
+    <description>
+        Seata分布式事务
+    </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -5,28 +5,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.redick.cloud</groupId>
-        <artifactId>ruuby-biz</artifactId>
+        <artifactId>ruuby-modules</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>ruuby-order</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>ruuby-module-sentinel</artifactId>
 
-    <description>demo程序，订单系统</description>
-    <modules>
-        <module>ruuby-order-svc</module>
-    </modules>
+    <description>
+        Sentinel统一模块
+    </description>
+
 
     <dependencies>
+        <!-- SpringCloud Alibaba Sentinel -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
+        <!-- Sentinel Datasource Nacos -->
         <dependency>
-            <groupId>io.github.redick01</groupId>
-            <artifactId>log-helper-spring-boot-starter-openfeign</artifactId>
-            <version>1.0.4-RELEASE</version>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
     </dependencies>
 </project>

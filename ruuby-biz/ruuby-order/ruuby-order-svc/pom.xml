@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.redick.cloud</groupId>
         <artifactId>ruuby-order</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>ruuby-order-svc</artifactId>
@@ -14,28 +14,28 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- Sentinel starter -->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-
-        <!-- Sentinel Datasource Nacos -->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-nacos</artifactId>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-module-sentinel</artifactId>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-account-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-module-swagger</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-module-rocketmq</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

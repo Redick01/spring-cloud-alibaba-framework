@@ -5,12 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.redick.cloud</groupId>
-        <artifactId>spring-cloud-alibaba-framework</artifactId>
+        <artifactId>ruuby-modules</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>ruuby-auth</artifactId>
+    <artifactId>ruuby-module-rocketmq</artifactId>
 
-    <description>Auth认证中心</description>
+    <description>
+        RocketMQ统一控制模块
+    </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+        </dependency>
+    </dependencies>
 </project>

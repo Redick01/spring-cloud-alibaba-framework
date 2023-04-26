@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.redick.cloud</groupId>
         <artifactId>ruuby-account</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     
     <artifactId>ruuby-account-svc</artifactId>
@@ -17,19 +17,25 @@
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-account-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-module-swagger</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-module-rocketmq</artifactId>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-module-datasource</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <!-- MySQL Driver -->
