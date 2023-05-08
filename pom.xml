@@ -24,7 +24,8 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <!-- Project revision -->
-        <revision>2021.0.4.0</revision>
+        <revision>1.0.0</revision>
+        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
         <!-- Spring Cloud -->
         <spring.cloud.version>2021.0.5</spring.cloud.version>
         <!-- Spring Boot -->
@@ -45,7 +46,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${revision}</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
