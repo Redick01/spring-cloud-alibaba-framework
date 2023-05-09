@@ -19,6 +19,7 @@
         <module>ruuby-module-seata</module>
         <module>ruuby-module-rocketmq</module>
         <module>ruuby-module-sentinel</module>
+        <module>ruuby-module-xxljob</module>
     </modules>
 
     <packaging>pom</packaging>
