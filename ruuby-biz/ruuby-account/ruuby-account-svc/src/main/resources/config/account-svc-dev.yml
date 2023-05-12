@@ -5,6 +5,40 @@ spring:
     name: account-svc
   profiles:
     active: dev
+  datasource:
+    dynamic:
+      #设置默认的数据源或者数据源组,默认值即为master
+      primary: master
+      #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
+      strict: false
+      datasource:
+        master:
+          url: jdbc:mysql://127.0.0.1:3316/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
+          username: root
+          password: admin123
+          driver-class-name: com.mysql.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+          initialSize: 5
+          minIdle: 5
+          maxActive: 20
+        slave1:
+          url: jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
+          username: root
+          password: admin123
+          driver-class-name: com.mysql.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+          initialSize: 5
+          minIdle: 5
+          maxActive: 20
+        slave2:
+          url: jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
+          username: root
+          password: admin123
+          driver-class-name: com.mysql.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+          initialSize: 5
+          minIdle: 5
+          maxActive: 20
   # 解决springboot 2.6以上集成swagger3报错问题
   mvc:
     pathmatch:
@@ -31,7 +65,39 @@ spring:
           - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
         namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
         group: DEFAULT-GROUP
-
+    stream:
+      function:
+        # consumer bean,多个的话用";"分隔
+        definition: consumer
+      # Spring Cloud Stream RocketMQ配置项
+      rocketmq:
+        binder:
+          # name server
+          name-server: 172.17.10.179:9876
+          # 阿里云ak sk配置
+          # accessKey:
+          # secretKey:
+          # 是否为Producer和Consumer开启消息轨迹功能 默认 true
+          # enableMsgTrace: false
+          # 消息轨迹开启后存储的 topic 名称 默认 RMQ_SYS_TRACE_TOPIC
+          # customizedTraceTopic: RMQ_SYS_TRACE_TOPIC
+        bindings:
+          # 生成规则 function.definition - in - index（坑）
+          consumer-in-0:
+            # RocketMQ Consumer配置项
+            consumer:
+              # 是否开启消费，默认为 true
+              enabled: true
+              # 是否使用广播消费，默认为 false 使用集群消费，如果要使用广播消费值设成true
+              broadcasting: false
+      # Binding配置项
+      bindings:
+        consumer-in-0:
+          # RocketMQ Topic
+          destination: TPC_Test_dev
+          content-type: application/json
+          # 消费者组，RocketMQ的Group
+          group: GID_Test_dev
 
 management:
   endpoints:

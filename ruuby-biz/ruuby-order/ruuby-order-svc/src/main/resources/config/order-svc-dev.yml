@@ -48,11 +48,56 @@ spring:
             data-type: json
             # 具体配置参考com.alibaba.cloud.sentinel.datasource.RuleType
             rule-type: flow
-
+    stream:
+      function:
+        definition: producer
+      # Spring Cloud Stream RocketMQ配置项
+      rocketmq:
+        binder:
+          # name server 配置
+          name-server: 172.17.10.179:9876
+          # 阿里云ak sk配置
+          # accessKey:
+          # secretKey:
+          # 是否为Producer和Consumer开启消息轨迹功能 默认 true
+          # enableMsgTrace: false
+          # 消息轨迹开启后存储的 topic 名称 默认 RMQ_SYS_TRACE_TOPIC
+          # customizedTraceTopic: RMQ_SYS_TRACE_TOPIC
+        bindings:
+          # 生成规则 function.definition - out - index（坑）
+          producer-out-0:
+            producer:
+              # 是否开启生产，默认为 true
+              enabled: true
+              # 生产者分组
+              group: output_1
+              # 是否同步发送消息，默认为 false 异步
+              # sync: true
+          producer-out-1:
+            producer:
+              # 是否开启生产，默认为 true
+              enabled: true
+              # 生产者分组
+              group: output_2
+              # 是否同步发送消息，默认为 false 异步
+              # sync: true
+      # Binding配置项
+      bindings:
+        producer-out-0:
+          # RocketMQ Topic
+          destination: TPC_Test_dev
+          # 内容格式
+          # content-type: application/json
+        producer-out-1:
+          # RocketMQ Topic
+          destination: TPC_Test_dev
+          # 内容格式
+          # content-type: application/json
 # feign支持sentinel
-# feign:
-#   sentinel:
-#     enabled: true
+feign:
+  sentinel:
+    enabled: true
+
 # RestTemplate支持sentinel
 resttemplate:
   sentinel:

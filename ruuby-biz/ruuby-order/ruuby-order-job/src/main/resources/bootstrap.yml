@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: order-job
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      username: "nacos"
+      password: "nacos"
+      config:
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        # 配置文件格式
+        file-extension: yml
+        shared-configs:
+          - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        #  - order-xxl-job.properties
+        extension-configs:
+          - data-id: order-xxl-job.properties
+            refresh: true
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+        group: DEFAULT-GROUP

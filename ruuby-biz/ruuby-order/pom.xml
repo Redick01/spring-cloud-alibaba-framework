@@ -15,6 +15,7 @@
     <description>demo程序，订单系统</description>
     <modules>
         <module>ruuby-order-svc</module>
+        <module>ruuby-order-job</module>
     </modules>
 
     <dependencies>

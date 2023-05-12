@@ -38,6 +38,7 @@
         <mybatis.plus.version>3.5.2</mybatis.plus.version>
         <dynamic.datasource.version>3.5.1</dynamic.datasource.version>
         <druid.version>1.2.15</druid.version>
+        <xxl-job.version>2.4.0</xxl-job.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
