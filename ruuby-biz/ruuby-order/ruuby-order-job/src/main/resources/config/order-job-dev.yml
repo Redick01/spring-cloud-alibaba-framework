@@ -1,0 +1,25 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: order-job
+  profiles:
+    active: dev
+  # 解决springboot 2.6以上集成swagger3报错问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# swagger配置
+swagger:
+  enabled: true
+  basePackage: io.redick.cloud.order
+  title: Order模块接口文档
+  description: Order模块接口文档
+  version: 0.0.1
+  terms-of-service-ur: io.redick.cloud.order
