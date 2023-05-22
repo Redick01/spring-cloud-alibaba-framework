@@ -1,6 +1,5 @@
 package io.redick.cloud.order.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.redick.annotation.LogMarker;
 import io.redick.cloud.account.AccountService;
 import io.redick.cloud.account.dto.StockDTO;
@@ -8,13 +7,10 @@ import io.redick.cloud.common.domain.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.apache.http.config.MessageConstraints;
-import org.apache.rocketmq.common.message.MessageConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.stream.function.StreamBridge;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.web.bind.annotation.GetMapping;

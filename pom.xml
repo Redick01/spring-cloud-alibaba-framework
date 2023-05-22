@@ -39,6 +39,11 @@
         <dynamic.datasource.version>3.5.1</dynamic.datasource.version>
         <druid.version>1.2.15</druid.version>
         <xxl-job.version>2.4.0</xxl-job.version>
+        <lomnok.version>1.18.24</lomnok.version>
+        <checkstyle-site.version>3.7.1</checkstyle-site.version>
+        <checkstyle.version>3.1.0</checkstyle.version>
+        <flatten.version>1.1.0</flatten.version>
+        <owasp.version>8.1.0</owasp.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
@@ -88,7 +93,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>${lomnok.version}</version>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/io.github.redick01/log-helper-spring-boot-starter-common -->
@@ -100,6 +105,38 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- 公共checkstyle标准配置，可以在子模块中覆盖，修改自定义选项 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle.version}</version>
+                    <configuration>
+                        <!-- checkstyle配置文件位置 -->
+                        <configLocation>checkstyle/checkstyle-ali.xml</configLocation>
+                        <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                        <consoleOutput>true</consoleOutput>
+                        <encoding>UTF-8</encoding>
+                        <skip>false</skip>
+                        <!--这里是说当前这个配置是什么错误级别。如果配置的是error，那么扫描到不符合条件的，就是打印error。checkstyle里允许的错误级别有error, warning, info. -->
+                        <violationSeverity>error</violationSeverity>
+                        <!-- 是否打断命令执行，错误的时候会停止。否则，错误会生成报告，但不会阻止命令执行。 -->
+                        <failsOnError>false</failsOnError>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>validate</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>checkstyle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -109,11 +146,25 @@
                 </configuration>
             </plugin>
 
+            <!-- 检测依赖漏洞组件 -->
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${owasp.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- 版本管理 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
-                <version>1.1.0</version>
+                <version>${flatten.version}</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
                     <flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -134,6 +185,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!--checkstyle插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${checkstyle-site.version}</version>
             </plugin>
         </plugins>
     </build>
