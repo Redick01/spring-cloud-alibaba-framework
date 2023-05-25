@@ -1,3 +1,4 @@
+```shell
 # 安全认证模块
 ├── ruuby-auth
 # 业务模块
@@ -24,3 +25,4 @@
     ├── ruuby-module-swagger
     # 定时任务XXL-JOB模块
     └── ruuby-module-xxljob
+```
