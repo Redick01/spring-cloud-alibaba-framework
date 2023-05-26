@@ -6,8 +6,7 @@ import io.redick.cloud.account.dto.StockDTO;
 import io.redick.cloud.common.domain.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.stream.function.StreamBridge;
@@ -28,12 +27,26 @@ import java.util.Map;
 @RestController
 @RequestMapping("/order")
 @Api(tags = "订单")
-@AllArgsConstructor
 public class OrderController {
 
     private final AccountService accountService;
 
     private final StreamBridge streamBridge;
+
+    private final LoadBalancerClient loadBalancerClient;
+
+    private final RestTemplate restTemplate;
+
+    public OrderController(AccountService accountService, StreamBridge streamBridge,
+                           LoadBalancerClient loadBalancerClient, RestTemplate restTemplate) {
+        this.accountService = accountService;
+        this.streamBridge = streamBridge;
+        this.loadBalancerClient = loadBalancerClient;
+        this.restTemplate = restTemplate;
+    }
+
+    @Value("${spring.application.name}")
+    private String appName;
 
     @GetMapping("/accountList")
     @LogMarker(businessDescription = "/order/accountList")
@@ -42,12 +55,6 @@ public class OrderController {
         return accountService.list();
     }
 
-    @Autowired
-    private LoadBalancerClient loadBalancerClient;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
     @GetMapping("/stockList")
     @LogMarker(businessDescription = "/order/stockList")
     @ApiOperation(value = "获取库存列表")
@@ -55,6 +62,13 @@ public class OrderController {
         ServiceInstance serviceInstance = loadBalancerClient.choose("account-svc");
         String url = String.format("http://%s:%s/account/list", serviceInstance.getHost(),serviceInstance.getPort());
         return restTemplate.getForObject(url, R.class);
+    }
+
+    @GetMapping("/echo")
+    public String echo(){
+        ServiceInstance serviceInstance = loadBalancerClient.choose("account-svc");
+        String url = String.format("http://%s:%s/account/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
+        return restTemplate.getForObject(url, String.class);
     }
 
     @GetMapping("/mqStock")

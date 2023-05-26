@@ -32,6 +32,11 @@ public class AccountController extends BaseController implements AccountService 
     @Autowired
     private StockService stockService;
 
+    @GetMapping(path = "/echo/{string}")
+    public String echo(@PathVariable String string) {
+        return "Hello Nacos Discovery " + string;
+    }
+
     @GetMapping(path = "/list")
     @LogMarker(businessDescription = "account#list")
     @ApiOperation(value = "Account#list", notes = "account")

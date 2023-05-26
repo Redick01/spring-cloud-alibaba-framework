@@ -16,14 +16,14 @@ import java.util.function.Supplier;
 @Slf4j
 public class ProducerConfiguration {
 
-    @Bean
-    public Supplier<Flux<StockDTO>> producer() {
-        return () -> Flux.interval(Duration.ofSeconds(2)).map(s -> {
-            StockDTO stockDTO = new StockDTO();
-            stockDTO.setProductId("123");
-            stockDTO.setProductName("手机");
-            stockDTO.setTotalCount(1000);
-            return stockDTO;
-        }).log();
-    }
+//    @Bean
+//    public Supplier<Flux<StockDTO>> producer() {
+//        return () -> Flux.interval(Duration.ofSeconds(2)).map(s -> {
+//            StockDTO stockDTO = new StockDTO();
+//            stockDTO.setProductId("123");
+//            stockDTO.setProductName("手机");
+//            stockDTO.setTotalCount(1000);
+//            return stockDTO;
+//        }).log();
+//    }
 }
