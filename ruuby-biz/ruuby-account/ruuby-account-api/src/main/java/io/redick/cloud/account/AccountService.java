@@ -6,6 +6,7 @@ import io.redick.cloud.account.dto.StockDTO;
 import io.redick.cloud.common.domain.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -23,4 +24,12 @@ public interface AccountService {
     @GetMapping(path = "/list")
     R<List<StockDTO>> list();
 
+    /**
+     * 注：OpenFeign+@PathVariable 需要指定value否则会报错
+     *
+     * @param string String
+     * @return String
+     */
+    @GetMapping(path = "/echo/{string}")
+    String echo(@PathVariable(value="string") String string);
 }

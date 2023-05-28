@@ -16,4 +16,9 @@ public class AccountCallback implements AccountService {
     public R<List<StockDTO>> list() {
         return R.fail(null, Constants.FLOW, "Sentinel circuit breaker!");
     }
+
+    @Override
+    public String echo(String string) {
+        return "Sentinel circuit breaker!";
+    }
 }

@@ -65,10 +65,16 @@ public class OrderController {
     }
 
     @GetMapping("/echo")
+    @LogMarker(businessDescription = "/order/echo")
     public String echo(){
-        ServiceInstance serviceInstance = loadBalancerClient.choose("account-svc");
-        String url = String.format("http://%s:%s/account/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
+        String url = String.format("http://%s:%s/account/echo/%s","account-svc", "8088", appName);
         return restTemplate.getForObject(url, String.class);
+    }
+
+    @GetMapping("/feignEcho")
+    @LogMarker(businessDescription = "/order/feignEcho")
+    public String feignEcho(){
+        return accountService.echo(appName);
     }
 
     @GetMapping("/mqStock")

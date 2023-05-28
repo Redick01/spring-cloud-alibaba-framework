@@ -33,6 +33,7 @@ public class AccountController extends BaseController implements AccountService 
     private StockService stockService;
 
     @GetMapping(path = "/echo/{string}")
+    @Override
     public String echo(@PathVariable String string) {
         return "Hello Nacos Discovery " + string;
     }
