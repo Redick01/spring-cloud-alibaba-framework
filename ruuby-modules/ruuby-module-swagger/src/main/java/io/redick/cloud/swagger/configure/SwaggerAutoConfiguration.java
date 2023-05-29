@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.util.StringUtils;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -53,6 +54,10 @@ public class SwaggerAutoConfiguration {
     @ConditionalOnMissingBean
     public Docket api(SwaggerProperties swaggerProperties) {
         return new Docket(DocumentationType.SWAGGER_2)
+                .globalResponses(HttpMethod.GET, new ArrayList<>())
+                .globalResponses(HttpMethod.PUT, new ArrayList<>())
+                .globalResponses(HttpMethod.POST, new ArrayList<>())
+                .globalResponses(HttpMethod.DELETE, new ArrayList<>())
                 .apiInfo(apiInfo(swaggerProperties))
                 .produces(Sets.newHashSet("application/json"))
                 // 是否开启

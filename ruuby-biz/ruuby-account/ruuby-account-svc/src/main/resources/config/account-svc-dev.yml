@@ -112,3 +112,9 @@ swagger:
   description: Account模块接口文档
   version: 0.0.1
   terms-of-service-ur: io.redick.cloud.account
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /account/v2/api-docs
+

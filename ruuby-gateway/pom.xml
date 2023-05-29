@@ -53,7 +53,7 @@
             <artifactId>ruuby-common</artifactId>
             <version>${revision}</version>
         </dependency>
-        
+
         <!-- Swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
