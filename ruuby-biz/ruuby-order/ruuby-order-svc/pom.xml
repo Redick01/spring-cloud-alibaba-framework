@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-module-sentinel</artifactId>
             <version>${revision}</version>

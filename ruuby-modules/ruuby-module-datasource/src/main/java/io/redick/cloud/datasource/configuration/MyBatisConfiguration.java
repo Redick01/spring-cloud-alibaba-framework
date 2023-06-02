@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @Import({DynamicDataSourcePlugin.class})
+@Deprecated
 public class MyBatisConfiguration {
 
     @Autowired

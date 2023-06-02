@@ -6,6 +6,7 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 /**
  * @author Redick01
  */
+@Deprecated
 public class RoutingDataSource extends AbstractRoutingDataSource {
 
     @Override

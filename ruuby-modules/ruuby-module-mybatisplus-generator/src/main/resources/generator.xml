@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generator desc="MyBatis-Plus代码生成">
     <url desc="数据库链接">
-        jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&amp;characterEncoding=UTF8
+        jdbc:mysql://127.0.0.1:3316/ruuby-storage?useUnicode=true&amp;characterEncoding=UTF8
     </url>
     <username desc="数据库用户名">
         root
@@ -13,17 +13,17 @@
         Redick01
     </author>
     <outputDir desc="指定输出目录，到main/java目录">
-        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-account/ruuby-account-svc/src/main/java
+        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-seata-biz/storage-biz/src/main/java
     </outputDir>
     <parentPackage desc="父包名">
-        io.redick.cloud.account
+        io.redick.cloud.seata.storage
     </parentPackage>
     <mapperPath desc="mapper xml文件路径">
-        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-account/ruuby-account-svc/src/main/java/io/redick/cloud/account/mapper
+        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-seata-biz/storage-biz/src/main/resources/mapper
     </mapperPath>
     <tables desc="表名列表">
         <table desc="表名">
-            stock
+            seata_stock
         </table>
     </tables>
     <tablePrefix desc="设置过滤表前缀">

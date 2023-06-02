@@ -14,6 +14,7 @@
     <modules>
         <module>ruuby-account</module>
         <module>ruuby-order</module>
+        <module>ruuby-seata-biz</module>
     </modules>
     
     <dependencies>

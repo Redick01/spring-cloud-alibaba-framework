@@ -16,6 +16,7 @@ import java.util.Map;
  * @author Redick01
  */
 @Configuration
+@Deprecated
 public class DataSourceConfiguration {
 
     /**

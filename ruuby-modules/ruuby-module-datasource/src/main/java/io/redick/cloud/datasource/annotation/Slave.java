@@ -11,5 +11,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @DS("slave")
+@Deprecated
 public @interface Slave {
 }

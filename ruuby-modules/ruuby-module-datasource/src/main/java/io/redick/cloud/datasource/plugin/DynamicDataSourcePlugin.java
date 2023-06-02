@@ -24,6 +24,7 @@ import java.util.Locale;
                 MappedStatement.class, Object.class, RowBounds.class,
                 ResultHandler.class }) })
 @Slf4j
+@Deprecated
 public class DynamicDataSourcePlugin implements Interceptor {
 
     private static final String REGEX = ".*insert\\u0020.*|.*delete\\u0020.*|.*update\\u0020.*";

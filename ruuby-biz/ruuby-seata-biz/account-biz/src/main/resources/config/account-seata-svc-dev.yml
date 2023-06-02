@@ -1,0 +1,60 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: account-seata-svc
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: admin123
+    url: jdbc:mysql://127.0.0.1:3316/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
+    username: root
+  cloud:
+    nacos:
+      username: "nacos"
+      password: "nacos"
+      discovery:
+        # 服务注册中心地址
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+      config:
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        # 配置文件格式
+        file-extension: yml
+        shared-configs:
+          - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+        group: DEFAULT-GROUP
+
+# seata配置
+seata:
+  registry:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      application: seata-server
+      username: nacos
+      password: nacos
+      namespace: acbe9e62-36d7-4feb-b137-d04b6c6c164e
+    type: nacos
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      namespace: acbe9e62-36d7-4feb-b137-d04b6c6c164e
+  tx-service-group: account_tx_group
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Redick01
  */
 @Slf4j
+@Deprecated
 public class DBContextHolder {
 
     private static final ThreadLocal<DBTypeEnum> CONTEXT_HOLDER = new ThreadLocal<>();

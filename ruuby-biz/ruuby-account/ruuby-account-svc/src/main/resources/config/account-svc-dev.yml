@@ -11,6 +11,10 @@ spring:
       primary: master
       #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
       strict: false
+      #开启读写分离
+      rw: true
+      #开启分页
+      page: true
       datasource:
         master:
           url: jdbc:mysql://127.0.0.1:3316/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
@@ -21,16 +25,7 @@ spring:
           initialSize: 5
           minIdle: 5
           maxActive: 20
-        slave1:
-          url: jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
-          username: root
-          password: admin123
-          driver-class-name: com.mysql.jdbc.Driver
-          type: com.alibaba.druid.pool.DruidDataSource
-          initialSize: 5
-          minIdle: 5
-          maxActive: 20
-        slave2:
+        slave:
           url: jdbc:mysql://127.0.0.1:3326/ruuby-stock?useUnicode=true&characterEncoding=UTF8&statementInterceptors=com.redick.support.mysql.Mysql5StatementInterceptor
           username: root
           password: admin123
@@ -117,4 +112,3 @@ springfox:
     swagger:
       v2:
         path: /account/v2/api-docs
-
