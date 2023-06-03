@@ -2,4 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.redick.cloud.seata.order.mapper.SeataOrderMapper">
 
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `seata_order` (`user_id`, `product_id`, `count`, `money`, `status`)
+        VALUES (#{userId}, #{productId}, #{count}, #{money}, 0);
+    </insert>
+
+    <update id="update">
+        UPDATE `seata_order`
+        SET money  = money - #{money},
+        status = 1
+        where id = #{id}
+        and status = #{status};
+    </update>
 </mapper>

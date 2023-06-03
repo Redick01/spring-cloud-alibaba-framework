@@ -13,4 +13,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface SeataStockService extends IService<SeataStock> {
 
+    /**
+     * 扣减库存
+     *
+     * @param productId 产品ID
+     * @param count 数量
+     */
+    void decrease(Long productId, Integer count);
 }
