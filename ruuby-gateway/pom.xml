@@ -16,12 +16,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        
-        <!-- SpringCloud Loadbalancer -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-loadbalancer</artifactId>
-        </dependency>
 
         <!-- SpringCloud Alibaba Sentinel Gateway -->
         <dependency>
@@ -51,6 +45,12 @@
         <dependency>
             <groupId>io.redick.cloud</groupId>
             <artifactId>ruuby-common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-module-graysacle</artifactId>
             <version>${revision}</version>
         </dependency>
 

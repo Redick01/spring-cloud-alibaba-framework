@@ -20,6 +20,7 @@
         <module>ruuby-module-rocketmq</module>
         <module>ruuby-module-sentinel</module>
         <module>ruuby-module-xxljob</module>
+        <module>ruuby-module-graysacle</module>
     </modules>
 
     <packaging>pom</packaging>
