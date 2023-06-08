@@ -15,4 +15,10 @@
         基于spring cloud loadbalancer实现全链路灰度发布负载均衡器
     </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>
