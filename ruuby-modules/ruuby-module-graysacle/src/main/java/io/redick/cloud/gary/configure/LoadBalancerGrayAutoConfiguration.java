@@ -33,10 +33,10 @@ import org.springframework.core.env.Environment;
  * @date: 2023/6/8 17:04
  */
 @Configuration
-@ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = true)
 public class LoadBalancerGrayAutoConfiguration {
 
     @Bean
+    @ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = true)
     @ConditionalOnBean(LoadBalancerClientFactory.class)
     public ReactorLoadBalancer<ServiceInstance> grayReactorLoadBalancer(Environment environment,
                                                                         LoadBalancerClientFactory loadBalancerClientFactory) {
