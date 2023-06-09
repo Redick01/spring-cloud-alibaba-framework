@@ -20,9 +20,7 @@ package io.redick.cloud.gary.configure;
 import io.redick.cloud.gary.loadbalancer.GrayscaleLoadBalancer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerProperties;
 import org.springframework.cloud.loadbalancer.core.ReactorLoadBalancer;
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
 import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
@@ -35,8 +33,7 @@ import org.springframework.core.env.Environment;
  * @date: 2023/6/8 17:04
  */
 @Configuration
-@EnableConfigurationProperties(LoadBalancerProperties.class)
-@ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true")
+@ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = true)
 public class LoadBalancerGrayAutoConfiguration {
 
     @Bean

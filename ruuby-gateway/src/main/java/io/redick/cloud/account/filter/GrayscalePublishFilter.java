@@ -27,6 +27,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -42,9 +43,10 @@ public class GrayscalePublishFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         var headers = exchange.getRequest().getHeaders();
         if (headers.containsKey(GrayConstant.HEADER_GRAY_TAG)) {
-            Object garyValue = headers.get(GrayConstant.HEADER_GRAY_TAG);
+            List<String> garyValue = headers.get(GrayConstant.HEADER_GRAY_TAG);
             if (!Objects.isNull(garyValue)
-                    && "true".equals(garyValue.toString())) {
+                    && garyValue.size() > 0
+                    && "true".equals(garyValue.get(0))) {
                 GrayRequestContextHolder.setGrayTag(true);
             }
         }

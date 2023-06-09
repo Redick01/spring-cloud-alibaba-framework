@@ -28,6 +28,12 @@
             <artifactId>ruuby-common</artifactId>
             <version>${revision}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.redick.cloud</groupId>
+            <artifactId>ruuby-module-graysacle</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 
 </project>
