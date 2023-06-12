@@ -116,7 +116,8 @@ public class GrayscaleLoadBalancer implements ReactorServiceInstanceLoadBalancer
         // 灰度标记不为空并且标记为true, 筛选ServiceInstance
         if (StringUtils.isNotBlank(gray) && StringUtils.equals(GrayConstant.HEADER_GRAY_TAG_VALUE, gray)) {
             return instances.stream()
-                    .filter(instance -> StringUtils.isNotBlank(instance.getMetadata().get(GrayConstant.HEADER_GRAY_TAG)) && gray.equals(instance.getMetadata().get(GrayConstant.HEADER_GRAY_TAG)))
+                    .filter(instance -> StringUtils.isNotBlank(instance.getMetadata().get(GrayConstant.HEADER_GRAY_TAG))
+                            && gray.equals(instance.getMetadata().get(GrayConstant.HEADER_GRAY_TAG)))
                     .collect(Collectors.toList());
         } else {
             return instances;

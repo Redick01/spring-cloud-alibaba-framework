@@ -15,31 +15,33 @@
  * limitations under the License.
  */
 
-package io.redick.cloud.gary.common;
+package io.redick.cloud.account.configure.properties;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Redick01
- * @date: 2023/6/7 20:15
+ * @date: 2023/6/12 14:32
  */
-@Getter
-@AllArgsConstructor
-public enum RuleType {
+@Configuration
+@RefreshScope
+@ConfigurationProperties("spring.cloud.gateway.gray")
+@Data
+public class GrayProperties {
 
     /**
-     * 用户ID
+     * 灰度开关
      */
-    USER_ID,
+    private Boolean enabled;
 
     /**
-     * IP
+     * 灰度匹配内容
      */
-    IP,
-
-    /**
-     * 服务版本号
-     */
-    VERSION;
+    private List<String> matches = new ArrayList<>();
 }
