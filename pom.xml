@@ -44,6 +44,7 @@
         <checkstyle.version>3.1.0</checkstyle.version>
         <flatten.version>1.1.0</flatten.version>
         <owasp.version>8.1.0</owasp.version>
+        <elastic-job.version>3.0.3</elastic-job.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     

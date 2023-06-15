@@ -21,6 +21,7 @@
         <module>ruuby-module-sentinel</module>
         <module>ruuby-module-xxljob</module>
         <module>ruuby-module-graysacle</module>
+        <module>ruuby-module-elasticjob</module>
     </modules>
 
     <packaging>pom</packaging>

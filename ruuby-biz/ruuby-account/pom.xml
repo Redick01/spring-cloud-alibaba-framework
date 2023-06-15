@@ -18,6 +18,7 @@
     <modules>
         <module>ruuby-account-api</module>
         <module>ruuby-account-svc</module>
+        <module>ruuby-account-job</module>
     </modules>
     
     <dependencies>
