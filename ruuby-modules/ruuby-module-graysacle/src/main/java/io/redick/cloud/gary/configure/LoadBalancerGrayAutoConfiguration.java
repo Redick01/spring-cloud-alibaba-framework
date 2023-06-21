@@ -35,6 +35,12 @@ import org.springframework.core.env.Environment;
 @Configuration
 public class LoadBalancerGrayAutoConfiguration {
 
+    /**
+     * 自定义LoadBalancer
+     * @param environment Environment
+     * @param loadBalancerClientFactory LoadBalancerClientFactory
+     * @return LoadBalancer
+     */
     @Bean
     @ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = true)
     @ConditionalOnBean(LoadBalancerClientFactory.class)

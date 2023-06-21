@@ -18,7 +18,7 @@
 package io.redick.cloud.account.filter;
 
 import io.redick.cloud.account.configure.properties.GrayProperties;
-import io.redick.cloud.account.gray.GrayRequestContextHolder;
+import io.redick.cloud.gary.holder.GrayRequestContextHolder;
 import io.redick.cloud.gary.common.GrayConstant;
 import lombok.AllArgsConstructor;
 import lombok.var;

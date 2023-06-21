@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  io.redick.cloud.gary.configure.GrayFeignInterceptorAutoConfiguration,\
+  io.redick.cloud.gary.configure.GrayWebMvcAutoConfiguration
