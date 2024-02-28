@@ -25,6 +25,12 @@
             <version>${log-helper.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.redick01</groupId>
+            <artifactId>mysql-8</artifactId>
+            <version>${log-helper.version}</version>
+        </dependency>
+
         <!-- Druid -->
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -37,17 +37,17 @@
             <version>${revision}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.redick.cloud</groupId>
-            <artifactId>ruuby-module-rocketmq</artifactId>
-            <version>${revision}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.redick.cloud</groupId>-->
+<!--            <artifactId>ruuby-module-rocketmq</artifactId>-->
+<!--            <version>${revision}</version>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>io.github.reidck01</groupId>
-            <artifactId>log-helper-spring-boot-starter-scs</artifactId>
-            <version>1.0.5-RELEASE</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.github.reidck01</groupId>-->
+<!--            <artifactId>log-helper-spring-boot-starter-scs</artifactId>-->
+<!--            <version>1.0.5-RELEASE</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <generator desc="MyBatis-Plus代码生成">
     <url desc="数据库链接">
-        jdbc:mysql://127.0.0.1:3316/ruuby-storage?useUnicode=true&amp;characterEncoding=UTF8
+        jdbc:mysql://xxxx.com:3306/ruubypaypayment?useUnicode=true
     </url>
     <username desc="数据库用户名">
-        root
+        xxxx
     </username>
     <password desc="数据库密码">
-        admin123
+        xxx
     </password>
     <author desc="java文件作者">
         Redick01
     </author>
     <outputDir desc="指定输出目录，到main/java目录">
-        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-seata-biz/storage-biz/src/main/java
+        /Users/penghuiliu/prog/data-restore/src/main/java
     </outputDir>
     <parentPackage desc="父包名">
-        io.redick.cloud.seata.storage
+        com.ruuby.datarestore
     </parentPackage>
     <mapperPath desc="mapper xml文件路径">
-        /Users/penghuiliu/prog/spring-cloud-alibaba-framework/ruuby-biz/ruuby-seata-biz/storage-biz/src/main/resources/mapper
+        /Users/penghuiliu/prog/data-restore/src/main/resources/mapper
     </mapperPath>
     <tables desc="表名列表">
         <table desc="表名">
-            seata_stock
+            union_pay_contract_record
         </table>
     </tables>
     <tablePrefix desc="设置过滤表前缀">

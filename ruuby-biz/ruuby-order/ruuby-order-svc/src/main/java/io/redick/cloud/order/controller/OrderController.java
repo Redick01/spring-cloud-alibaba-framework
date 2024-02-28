@@ -9,9 +9,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.cloud.stream.function.StreamBridge;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.GenericMessage;
+//import org.springframework.cloud.stream.function.StreamBridge;
+//import org.springframework.messaging.Message;
+//import org.springframework.messaging.support.GenericMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,16 +31,15 @@ public class OrderController {
 
     private final AccountService accountService;
 
-    private final StreamBridge streamBridge;
+    //private final StreamBridge streamBridge;
 
     private final LoadBalancerClient loadBalancerClient;
 
     private final RestTemplate restTemplate;
 
-    public OrderController(AccountService accountService, StreamBridge streamBridge,
-                           LoadBalancerClient loadBalancerClient, RestTemplate restTemplate) {
+    public OrderController(AccountService accountService, LoadBalancerClient loadBalancerClient, RestTemplate restTemplate) {
         this.accountService = accountService;
-        this.streamBridge = streamBridge;
+        //this.streamBridge = streamBridge;
         this.loadBalancerClient = loadBalancerClient;
         this.restTemplate = restTemplate;
     }
@@ -86,8 +85,8 @@ public class OrderController {
         stockDTO.setProductName("手机112");
         stockDTO.setTotalCount(2000);
         Map<String, Object> headers = new HashMap<>();
-        Message<StockDTO> msg = new GenericMessage<>(stockDTO, headers);
-        streamBridge.send("producer-out-1", msg);
+//        Message<StockDTO> msg = new GenericMessage<>(stockDTO, headers);
+//        streamBridge.send("producer-out-1", msg);
         return R.ok();
     }
 }
