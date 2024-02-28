@@ -10,5 +10,17 @@
     "count": 2,
     "grade": 0,
     "limitApp": "default"
+  },
+  {
+    "resource": "GET:http://account-svc/account/echo/{string}",
+    "count": 2,
+    "grade": 0,
+    "limitApp": "default"
+  },
+  {
+    "resource": "GET:http://account-svc:8088/account/echo/order-svc",
+    "count": 2,
+    "grade": 0,
+    "limitApp": "default"
   }
 ]

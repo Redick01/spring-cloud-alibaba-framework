@@ -7,10 +7,14 @@ spring:
   profiles:
     active: dev
   redis:
-    host: localhost
+    host: r-2zebca7d4628bac4.redis.rds.aliyuncs.com
     port: 6379
-    password:
+  password: Qrbrqj88
   cloud:
+    loadbalancer:
+      # 灰度发布支持
+      gray:
+        enabled: true
     nacos:
       username: "nacos"
       password: "nacos"
@@ -33,6 +37,12 @@ spring:
         namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
         group: DEFAULT-GROUP
     gateway:
+      gray:
+        enabled: true
+        matches:
+          - 123
+          - 456
+          - 10.1.1.10
       routes:
         - id: account-svc
           uri: lb://account-svc
@@ -87,8 +97,8 @@ security:
   xss:
     enabled: true
     excludeUrls:
-      - /account/list
-      - /order
+      - /account/v2/**
+      - /order/v2/**
 
 management:
   endpoints:
