@@ -39,7 +39,7 @@
         <dynamic.datasource.version>3.5.1</dynamic.datasource.version>
         <druid.version>1.2.15</druid.version>
         <xxl-job.version>2.4.0</xxl-job.version>
-        <lomnok.version>1.18.24</lomnok.version>
+        <lombok.version>1.18.24</lombok.version>
         <checkstyle-site.version>3.7.1</checkstyle-site.version>
         <checkstyle.version>3.1.0</checkstyle.version>
         <flatten.version>1.1.0</flatten.version>
@@ -100,7 +100,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lomnok.version}</version>
+            <version>${lombok.version}</version>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/io.github.redick01/log-helper-spring-boot-starter-common -->
