@@ -7,9 +7,9 @@ spring:
   profiles:
     active: dev
   redis:
-    host: r-2zebca7d4628bac4.redis.rds.aliyuncs.com
+    host: 127.0.0.1
     port: 6379
-  password: Qrbrqj88
+  password:
   cloud:
     loadbalancer:
       # 灰度发布支持
