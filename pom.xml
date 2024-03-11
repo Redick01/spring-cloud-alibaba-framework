@@ -18,6 +18,7 @@
         <module>ruuby-common</module>
         <module>ruuby-modules</module>
         <module>ruuby-auth</module>
+        <module>ruuby-boot-admin</module>
     </modules>
     
     <properties>

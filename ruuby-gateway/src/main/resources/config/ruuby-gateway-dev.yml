@@ -7,35 +7,14 @@ spring:
   profiles:
     active: dev
   redis:
-    host: 127.0.0.1
+    host: xxxx
     port: 6379
-  password:
+  password: xxxx
   cloud:
     loadbalancer:
       # 灰度发布支持
       gray:
         enabled: true
-    nacos:
-      username: "nacos"
-      password: "nacos"
-      discovery:
-        # 服务注册中心地址
-        server-addr: 127.0.0.1:8848
-        # 阿里云平台ak，sk
-        # access-key:
-        # secret-key:
-        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
-      config:
-        server-addr: 127.0.0.1:8848
-        # 阿里云平台ak，sk
-        # access-key:
-        # secret-key:
-        # 配置文件格式
-        file-extension: yml
-        shared-configs:
-          - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
-        group: DEFAULT-GROUP
     gateway:
       gray:
         enabled: true
@@ -66,6 +45,10 @@ spring:
             - Path=/gateway/order/**
           filters:
             - StripPrefix=1
+            # - name: AuthFilter
+            #   args:
+            #     type: jwt
+            #     publicKey: 11111
     sentinel:
       # 取消控制台懒加载
       eager: true
@@ -99,9 +82,19 @@ security:
     excludeUrls:
       - /account/v2/**
       - /order/v2/**
-
+# 指标采集
 management:
+  health:
+    redis:
+      enabled: false
+    sentinel:
+      enabled: false
+    ldap:
+      enabled: false
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,16 @@
+spring:
+  # 解决springboot 2.6以上集成swagger3报错问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册中心地址
+        server-addr: 127.0.0.1:8848
+        # 阿里云平台ak，sk
+        # access-key:
+        # secret-key:
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+        metadata:
+          gray: true

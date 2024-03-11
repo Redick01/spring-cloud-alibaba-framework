@@ -1,9 +1,15 @@
 package io.redick.cloud.order.controller;
 
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.context.ContextUtil;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.redick.annotation.LogMarker;
 import io.redick.cloud.account.AccountService;
 import io.redick.cloud.account.dto.StockDTO;
 import io.redick.cloud.common.domain.R;
+import io.redick.cloud.order.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,11 +43,15 @@ public class OrderController {
 
     private final RestTemplate restTemplate;
 
-    public OrderController(AccountService accountService, LoadBalancerClient loadBalancerClient, RestTemplate restTemplate) {
+    private final UserService userService;
+
+    public OrderController(AccountService accountService, LoadBalancerClient loadBalancerClient,
+                           RestTemplate restTemplate, UserService userService) {
         this.accountService = accountService;
         //this.streamBridge = streamBridge;
         this.loadBalancerClient = loadBalancerClient;
         this.restTemplate = restTemplate;
+        this.userService = userService;
     }
 
     @Value("${spring.application.name}")
@@ -88,5 +98,22 @@ public class OrderController {
 //        Message<StockDTO> msg = new GenericMessage<>(stockDTO, headers);
 //        streamBridge.send("producer-out-1", msg);
         return R.ok();
+    }
+
+    @GetMapping("/flow")
+    public String flow() {
+        ContextUtil.enter("flow-us", "order-svc");
+        Entry entry = null;
+        try {
+            entry = SphU.entry("flow", EntryType.IN);
+            userService.userInfo();
+        } catch (BlockException e) {
+            return "block";
+        } finally {
+            if (entry != null) {
+                entry.exit();
+            }
+        }
+        return "success";
     }
 }

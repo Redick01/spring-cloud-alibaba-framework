@@ -42,29 +42,29 @@ spring:
     loadbalancer:
       gray:
         enabled: true
-    nacos:
-      username: "nacos"
-      password: "nacos"
-      discovery:
-        # 服务注册中心地址
-        server-addr: 127.0.0.1:8848
-        # 阿里云平台ak，sk
-        # access-key:
-        # secret-key:
-        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
-        metadata:
-          gray: true
-      config:
-        server-addr: 127.0.0.1:8848
-        # 阿里云平台ak，sk
-        # access-key:
-        # secret-key:
-        # 配置文件格式
-        file-extension: yml
-        shared-configs:
-          - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
-        group: DEFAULT-GROUP
+    # nacos:
+    #   username: "nacos"
+    #   password: "nacos"
+    #   discovery:
+    #     # 服务注册中心地址
+    #     server-addr: 127.0.0.1:8848
+    #     # 阿里云平台ak，sk
+    #     # access-key:
+    #     # secret-key:
+    #     namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+    #     metadata:
+    #       gray: true
+    #   config:
+    #     server-addr: 127.0.0.1:8848
+    #     # 阿里云平台ak，sk
+    #     # access-key:
+    #     # secret-key:
+    #     # 配置文件格式
+    #     file-extension: yml
+    #     shared-configs:
+    #       - ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+    #     namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+    #     group: DEFAULT-GROUP
     stream:
       function:
         # consumer bean,多个的话用";"分隔
@@ -99,11 +99,23 @@ spring:
           # 消费者组，RocketMQ的Group
           group: GID_Test_dev
 
+# 指标采集
 management:
+  health:
+    redis:
+      enabled: false
+    sentinel:
+      enabled: false
+    ldap:
+      enabled: false
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 # swagger配置
 swagger:
   enabled: true

@@ -1,0 +1,29 @@
+server:
+  port: 7890
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: ruuby-boot-admin
+  cloud:
+    nacos:
+      username: "nacos"
+      password: "nacos"
+      discovery:
+        server-addr: 127.0.0.1:8848
+        # namespace id
+        namespace: 3ef5e608-6ee8-4881-8e50-ed47a5a04af2
+  security:
+    user:
+      name: admin
+      password: admin123
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
