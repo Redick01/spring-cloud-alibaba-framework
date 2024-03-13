@@ -42,7 +42,7 @@ public class LoadBalancerGrayAutoConfiguration {
      * @return LoadBalancer
      */
     @Bean
-    @ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(value = "spring.cloud.loadbalancer.gray.enabled", havingValue = "true", matchIfMissing = false)
     @ConditionalOnBean(LoadBalancerClientFactory.class)
     public ReactorLoadBalancer<ServiceInstance> grayReactorLoadBalancer(Environment environment,
                                                                         LoadBalancerClientFactory loadBalancerClientFactory) {

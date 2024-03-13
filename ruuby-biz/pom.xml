@@ -15,6 +15,7 @@
         <module>ruuby-account</module>
         <module>ruuby-order</module>
         <module>ruuby-seata-biz</module>
+        <module>ruuby-monitor-center</module>
     </modules>
     
     <dependencies>
