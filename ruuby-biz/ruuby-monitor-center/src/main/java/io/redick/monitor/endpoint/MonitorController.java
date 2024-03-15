@@ -19,24 +19,24 @@ package io.redick.monitor.endpoint;
 
 import io.redick.monitor.business.CollectorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
-import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
-import org.springframework.boot.actuate.endpoint.annotation.Selector;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author: Redick01
- * @date: 2024/3/13 15:48
+ * @date: 2024/3/15 15:31
  */
-@Component
-@Endpoint(id = "monitor", enableByDefault = true)
-public class MonitorCenterEndpoint {
+@RestController
+@RequestMapping("/monitor")
+public class MonitorController {
 
     @Autowired
     private CollectorHandler collectorHandler;
 
-    @ReadOperation
-    public Response monitor(@Selector String business) {
+    @GetMapping(path = "/echo/{business}")
+    public Response monitor(@PathVariable String business) {
         return new Response(collectorHandler.doCollect(business));
     }
 }

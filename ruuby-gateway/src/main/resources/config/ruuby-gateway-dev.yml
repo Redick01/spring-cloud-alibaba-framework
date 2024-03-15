@@ -7,9 +7,9 @@ spring:
   profiles:
     active: dev
   redis:
-    host: xxxx
+    host: r-2zebca7d4628bac4.redis.rds.aliyuncs.com
     port: 6379
-  password: xxxx
+  password: Qrbrqj88
   cloud:
     loadbalancer:
       # 灰度发布支持
@@ -39,16 +39,18 @@ spring:
             #   args:
             #     type: jwt
             #     publicKey: 11111
+        - id: monitor-svc
+          uri: lb://monitor-svc
+          predicates:
+            - Path=/gateway/monitor/actuator/**
+          filters:
+            - StripPrefix=1
         - id: order-svc
           uri: lb://order-svc
           predicates:
             - Path=/gateway/order/**
           filters:
             - StripPrefix=1
-            # - name: AuthFilter
-            #   args:
-            #     type: jwt
-            #     publicKey: 11111
     sentinel:
       # 取消控制台懒加载
       eager: true
