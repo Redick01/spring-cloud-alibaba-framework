@@ -17,8 +17,10 @@
 
 package io.redick.monitor.business;
 
+import com.redick.util.LogUtil;
 import io.redick.monitor.endpoint.Response;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Component;
@@ -33,6 +35,7 @@ import java.util.Map;
  */
 @Component
 @AllArgsConstructor
+@Slf4j
 public class CollectorHandler {
 
     private static final String ERROR = "DOWN";
@@ -64,6 +67,7 @@ public class CollectorHandler {
 
     private String ping(ServiceInstance serviceInstance) {
         String url = String.format("http://%s:%s/actuator/health", serviceInstance.getHost(),serviceInstance.getPort());
+        log.info(LogUtil.marker(url), "url");
         Response response = restTemplate.getForObject(url, Response.class);
         return response != null ? response.getStatus() : "DOWN";
     }

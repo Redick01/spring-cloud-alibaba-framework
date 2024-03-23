@@ -17,12 +17,16 @@
 
 package io.redick.monitor.endpoint;
 
+import com.google.common.collect.Lists;
+import com.redick.annotation.LogMarker;
 import io.redick.monitor.business.CollectorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author: Redick01
@@ -36,7 +40,16 @@ public class MonitorController {
     private CollectorHandler collectorHandler;
 
     @GetMapping(path = "/echo/{business}")
-    public Response monitor(@PathVariable String business) {
-        return new Response(collectorHandler.doCollect(business));
+    @LogMarker(businessDescription = "健康监测")
+    public List<Response> monitor(@PathVariable String business) {
+        List<Response> responses = Lists.newArrayList();
+        // 解析参数
+        String[] strings = business.split(",");
+        for (String string : strings) {
+            String status = collectorHandler.doCollect(string);
+            Response response = new Response(string, status);
+            responses.add(response);
+        }
+        return responses;
     }
 }

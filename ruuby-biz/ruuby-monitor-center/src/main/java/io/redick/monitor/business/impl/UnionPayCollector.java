@@ -15,22 +15,23 @@
  * limitations under the License.
  */
 
-package io.redick.monitor.endpoint;
+package io.redick.monitor.business.impl;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.google.common.collect.Lists;
+import io.redick.monitor.business.BusinessCollector;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author: Redick01
- * @date: 2024/3/13 15:50
+ * @date: 2024/3/22 18:28
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Response {
+@Component("unionpay")
+public class UnionPayCollector implements BusinessCollector {
 
-    private String business;
-
-    private String status;
+    @Override
+    public List<String> serviceList() {
+        return Lists.newArrayList("order-svc", "account-svc");
+    }
 }
