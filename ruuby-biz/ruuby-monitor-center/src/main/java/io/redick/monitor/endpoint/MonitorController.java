@@ -17,16 +17,19 @@
 
 package io.redick.monitor.endpoint;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.redick.annotation.LogMarker;
+import com.redick.util.LogUtil;
 import io.redick.monitor.business.CollectorHandler;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Redick01
@@ -34,6 +37,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/monitor")
+@Slf4j
 public class MonitorController {
 
     @Autowired
@@ -41,14 +45,24 @@ public class MonitorController {
 
     @GetMapping(path = "/echo/{business}")
     @LogMarker(businessDescription = "健康监测")
-    public List<Response> monitor(@PathVariable String business) {
-        List<Response> responses = Lists.newArrayList();
-        // 解析参数
-        String[] strings = business.split(",");
-        for (String string : strings) {
-            String status = collectorHandler.doCollect(string);
-            Response response = new Response(string, status);
-            responses.add(response);
+    public Map<String, String> monitor(@PathVariable String business) {
+        Map<String, String> responses = Maps.newHashMap();
+        if (StringUtils.isBlank(business)) {
+            log.debug(LogUtil.marker(), "参数不可为空");
+            responses.put("code", "0001");
+        } else {
+            // 解析参数
+            try {
+                String[] strings = business.split(",");
+                for (String string : strings) {
+                    String status = collectorHandler.doCollect(string);
+                    responses.put(string, status);
+                }
+                responses.put("code", "0000");
+            } catch (Exception e) {
+                log.error(LogUtil.exceptionMarker(), "异常", e);
+                responses.put("code", "0002");
+            }
         }
         return responses;
     }
