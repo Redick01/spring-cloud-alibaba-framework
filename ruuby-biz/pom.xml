@@ -16,6 +16,7 @@
         <module>ruuby-order</module>
         <module>ruuby-seata-biz</module>
         <module>ruuby-monitor-center</module>
+        <module>sermant-example</module>
     </modules>
     
     <dependencies>
