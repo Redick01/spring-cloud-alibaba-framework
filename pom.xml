@@ -97,13 +97,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/io.github.redick01/log-helper-spring-boot-starter-common -->
         <dependency>
             <groupId>io.github.redick01</groupId>
