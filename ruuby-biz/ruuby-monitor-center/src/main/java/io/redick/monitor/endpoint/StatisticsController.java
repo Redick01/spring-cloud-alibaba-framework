@@ -129,7 +129,7 @@ public class StatisticsController {
         // 要插入的字符串
         String stringToInsert = username + ":" + password + "@";
         // 插入的位置
-        int position = 7;
+        int position = 8;
 
         // 创建StringBuilder对象
         StringBuilder stringBuilder = new StringBuilder(url);

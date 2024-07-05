@@ -33,7 +33,7 @@
         <spring-boot.version>2.7.7</spring-boot.version>
         <swagger.fox.version>3.0.0</swagger.fox.version>
         <fastjson.version>2.0.22</fastjson.version>
-        <log-helper.version>1.0.6-RELEASE</log-helper.version>
+        <log-helper.version>1.0.5-RELEASE</log-helper.version>
         <jjwt.version>0.9.1</jjwt.version>
         <mysql-connector.version>8.0.25</mysql-connector.version>
         <mybatis.plus.version>3.5.2</mybatis.plus.version>
